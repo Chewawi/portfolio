@@ -4,16 +4,6 @@ import { Status } from "~/components/shared/layout/status";
 import { Heading } from "~/components/ui/text/heading";
 import { getCodeStatus, getSpotifyStatus } from "~/lib/lanyard/api";
 
-export const fadeInFromTopAndOutTop = {
-	initial: { y: -5, x: 0, opacity: 0 },
-	enter: { y: 0, opacity: 1 },
-	exit: {
-		y: -5,
-		opacity: 0,
-		transition: { duration: 0.2 },
-	},
-};
-
 export default async function Page() {
 	const codeStatus = await getCodeStatus();
 	const spotifyStatus = await getSpotifyStatus();
