@@ -1,0 +1,59 @@
+---
+import Status from "./Status.astro";
+---
+
+<div class="flex">
+	<div class="container">
+		<div class="header">
+			<div class="title-container">
+				<h1 class="title-its">It's</h1>
+				<h2 class="title-chewawi">Chewawi</h2>
+			</div>
+			<Status />
+		</div>
+	</div>
+</div>
+
+<style>
+	.flex {
+		flex: 1 1 0%;
+	}
+
+	.container {
+		color: white;
+		margin: 120px;
+	}
+
+	.header {
+		margin-block: 150px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	.title-container {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.title-its {
+		font-size: 2.5rem;
+		margin-bottom: -100px;
+		margin-left: -50px;
+		transform: rotate(-20deg);
+		width: 40%;
+		line-height: 1.25;
+		letter-spacing: 0;
+		font-weight: 800;
+		animation: bounce 0.25s infinite alternate;
+	}
+
+	.title-chewawi {
+		font-size: 110px;
+		text-decoration: none;
+		text-transform: none;
+		line-height: 1.25;
+		letter-spacing: 0;
+		font-weight: 800;
+	}
+</style>

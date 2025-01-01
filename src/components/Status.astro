@@ -1,0 +1,79 @@
+---
+import { getCodeStatus, getSpotifyStatus } from "~/lib/lanyard/api";
+
+const codeStatus = await getCodeStatus();
+const spotifyStatus = await getSpotifyStatus();
+---
+
+<div class="status-container">
+    <div class="status-item">
+        <img src="/icons/spotify.png" alt="Spotify" draggable="false" />
+        {
+            spotifyStatus ? (
+                <span class="status-text">
+                    Listening to{" "}
+                    <span class="status-bold">
+                        {spotifyStatus.song} · {spotifyStatus.artist}
+                    </span>
+                </span>
+            ) : (
+                <span class="status-text">Not listening to anything</span>
+            )
+        }
+    </div>
+    <div class="status-item">
+        <img src="/icons/vscode.png" alt="Vscode" draggable="false" />
+        {
+            codeStatus ? (
+                <span class="status-text">
+                    Working on{" "}
+                    <span class="status-bold">
+                        {codeStatus.state ?? "some project"}
+                    </span>
+                </span>
+            ) : (
+                <span class="status-text">Not working</span>
+            )
+        }
+    </div>
+</div>
+
+<style>
+    .status-container {
+        margin-top: 109.9px;
+        display: flex;
+        flex-direction: column;
+        text-decoration: none;
+        text-transform: none;
+        gap: 15px;
+        align-items: flex-start;
+    }
+
+    .status-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .status-item img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .status-text {
+        font-size: 1.2rem;
+    }
+
+    .status-bold {
+        font-weight: bold;
+    }
+
+    @keyframes bounce {
+        from {
+            transform: translateY(0) rotate(-20deg);
+        }
+        to {
+            transform: translateY(-10px) rotate(-20deg);
+        }
+    }
+</style>
