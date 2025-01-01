@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import Github from "lucide-static/icons/github.svg";
 import Linkedin from "lucide-static/icons/linkedin.svg";
 import { getDiscordUser } from "~/lib/lanyard/api";
@@ -10,9 +11,11 @@ const user = await getDiscordUser();
     <div class="header-content">
         <div class="avatar-container">
             <div class="avatar">
-                <img
+                <Image
                     src={`https://cdn.discordapp.com/avatars/852970774067544165/${user.avatar}`}
                     alt={`${user.username}`}
+                    width={200}
+                    height={200}
                 />
             </div>
         </div>
