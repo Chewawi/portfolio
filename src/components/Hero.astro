@@ -56,4 +56,32 @@ import Status from "./Status.astro";
 		letter-spacing: 0;
 		font-weight: 800;
 	}
+
+	@keyframes bounce {
+		from {
+			transform: translateY(0) rotate(-20deg);
+		}
+		to {
+			transform: translateY(-10px) rotate(-20deg);
+		}
+	}
+
+	@media (max-width: 768px) {
+		.header {
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+		}
+
+		.title-its {
+			font-size: 1.8rem;
+			margin-bottom: -50px;
+			margin-left: -220px;
+			width: auto;
+		}
+
+		.title-chewawi {
+			font-size: 3.5rem;
+		}
+	}
 </style>

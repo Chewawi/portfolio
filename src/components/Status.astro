@@ -18,8 +18,9 @@ const spotifyStatus = await getSpotifyStatus();
         {
             spotifyStatus ? (
                 <span class="status-text">
-                    Listening to{" "}
+                    Listening to
                     <span class="status-bold">
+                        <br />
                         {spotifyStatus.song} · {spotifyStatus.artist}
                     </span>
                 </span>
@@ -39,8 +40,9 @@ const spotifyStatus = await getSpotifyStatus();
         {
             codeStatus ? (
                 <span class="status-text">
-                    Working on{" "}
+                    Working on
                     <span class="status-bold">
+                        <br />
                         {codeStatus.state ?? "some project"}
                     </span>
                 </span>
@@ -76,12 +78,27 @@ const spotifyStatus = await getSpotifyStatus();
         font-weight: bold;
     }
 
-    @keyframes bounce {
-        from {
-            transform: translateY(0) rotate(-20deg);
+    br {
+        display: none;
+    }
+
+    @media (max-width: 768px) {
+        .status-container {
+            margin-top: 20px;
+            align-items: center;
         }
-        to {
-            transform: translateY(-10px) rotate(-20deg);
+
+        .status-item {
+            text-align: center;
+            justify-content: center;
+        }
+
+        .status-text {
+            font-size: 1rem;
+        }
+
+        br {
+            display: block;
         }
     }
 </style>

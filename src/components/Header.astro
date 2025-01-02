@@ -27,7 +27,7 @@ const user = await getDiscordUser();
                 class="link"
             >
                 <Github size={30} />
-                GitHub
+                <span>GitHub</span>
             </a>
             <a
                 href="/linkedin"
@@ -36,7 +36,7 @@ const user = await getDiscordUser();
                 class="link"
             >
                 <Linkedin size={30} />
-                Linkedin
+                <span>Linkedin</span>
             </a>
         </div>
     </div>
@@ -116,5 +116,23 @@ const user = await getDiscordUser();
 
     .link:hover {
         color: gray;
+    }
+
+    @media (max-width: 768px) {
+        .links {
+            gap: 20px;
+        }
+
+        .link {
+            gap: 5px;
+        }
+
+        .link span {
+            display: none;
+        }
+
+        .header-content {
+            gap: 15px;
+        }
     }
 </style>
