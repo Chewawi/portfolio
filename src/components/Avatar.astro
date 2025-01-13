@@ -28,7 +28,13 @@ const coding = await getCodeStatus();
             <div class="status-popup">
                 {spotify && (
                     <div class="status-item">
-                        <Music size={16} />
+                        <Image
+                            class="status-icon"
+                            src="/icons/spotify.png"
+                            alt="Spotify"
+                            width={16}
+                            height={16}
+                        />
                         <div class="status-text">
                             <p>{spotify.song}</p>
                             <small>{spotify.artist}</small>
@@ -38,7 +44,13 @@ const coding = await getCodeStatus();
 
                 {coding && (
                     <div class="status-item">
-                        <Code size={16} />
+                        <Image
+                            class="status-icon"
+                            src="/icons/vscode.png"
+                            alt="VSCode"
+                            width={16}
+                            height={16}
+                        />
                         <div class="status-text">
                             <p>Coding in VSCode</p>
                             <small>{coding.details}</small>
@@ -88,8 +100,8 @@ const coding = await getCodeStatus();
         left: calc(100% + 10px);
         top: 50%;
         transform: translateY(-50%);
-        background: #1a1a1a;
-        border: 1px solid #333;
+        background: var(--bg-secondary);
+        border: 1px solid var(--text-secondary);
         border-radius: 8px;
         padding: 0.5rem;
         width: max-content;
@@ -107,9 +119,12 @@ const coding = await getCodeStatus();
 
     .status-item {
         display: flex;
-        align-items: center;
         gap: 8px;
         padding: 0.5rem;
+    }
+
+    .status-icon {
+        padding: 2px;
     }
 
     .status-item + .status-item {
@@ -117,6 +132,7 @@ const coding = await getCodeStatus();
     }
 
     .status-text {
+        color: var(--text-primary);
         overflow: hidden;
     }
 
@@ -129,7 +145,7 @@ const coding = await getCodeStatus();
     }
 
     .status-text small {
-        color: #888;
+        color: var(--text-secondary);
         font-size: 0.8rem;
     }
 
