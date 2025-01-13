@@ -7,9 +7,9 @@ import ThemeSwitch from "./ThemeSwitch.astro";
 
 <div class="header-container">
     <div class="header-content">
-        <Avatar />
-        <ThemeSwitch />
+        <Avatar client:load />
         <div class="links">
+            <ThemeSwitch size={30} />
             <a
                 href="https://github.com/chewawi"
                 target="_blank"

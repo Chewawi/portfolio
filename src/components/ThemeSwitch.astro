@@ -1,6 +1,12 @@
 ---
 import Sun from "lucide-static/icons/sun.svg";
 import Moon from "lucide-static/icons/moon.svg";
+
+interface Props {
+    size?: number;
+}
+
+const { size = 30 } = Astro.props;
 ---
 
 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
@@ -8,7 +14,7 @@ import Moon from "lucide-static/icons/moon.svg";
     <Moon class="moon-icon" />
 </button>
 
-<style>
+<style define:vars={{ size: `${size}px` }}>
     .theme-toggle {
         padding: 0.5rem;
         background: transparent;
@@ -20,6 +26,8 @@ import Moon from "lucide-static/icons/moon.svg";
 
     .sun-icon,
     .moon-icon {
+        width: var(--size);
+        height: var(--size);
         fill: var(--text-primary);
         transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
         opacity: 0;
