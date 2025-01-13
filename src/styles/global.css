@@ -1,0 +1,50 @@
+/* Theme Variables */
+:root {
+    /* dark theme (default) */
+    --grid-background: url(/grid-dark.svg);
+    --bg-primary: #000000;
+    --bg-secondary: #1a1a1a;
+    --text-primary: #ffffff;
+    --text-secondary: #888888;
+    --border-color: #333333;
+    --hover-bg: rgba(255, 255, 255, 0.1);
+    --accent-color: #3b82f6;
+}
+
+/* light theme */
+[data-theme="light"] {
+    --grid-background: url(/grid-light.svg);
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f5;
+    --text-primary: #000000;
+    --text-secondary: #666666;
+    --border-color: #e5e5e5;
+    --hover-bg: rgba(0, 0, 0, 0.1);
+    --accent-color: #2563eb;
+}
+
+html,
+body,
+*[class*="bg-"],
+*[class*="text-"],
+*[class*="border-"],
+*[class*="hover"],
+*[style*="background"],
+*[style*="color"] {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+}
+
+/* make this classes have theme transitions */
+.header-container,
+.avatar-container,
+.links,
+.link,
+button,
+div,
+a {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+}

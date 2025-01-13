@@ -1,0 +1,60 @@
+---
+import Sun from "lucide-static/icons/sun.svg";
+import Moon from "lucide-static/icons/moon.svg";
+---
+
+<button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+    <Sun class="sun-icon" />
+    <Moon class="moon-icon" />
+</button>
+
+<style>
+    .theme-toggle {
+        padding: 0.5rem;
+        background: transparent;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .sun-icon,
+    .moon-icon {
+        fill: var(--text-primary);
+        transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0;
+        position: absolute;
+    }
+
+    .moon-icon {
+        opacity: 1;
+    }
+
+    :global([data-theme="light"]) .sun-icon {
+        opacity: 1;
+    }
+
+    :global([data-theme="light"]) .moon-icon {
+        opacity: 0;
+    }
+</style>
+
+<script>
+    const themeToggle = document.getElementById("theme-toggle");
+    const rootElement = document.documentElement;
+
+    function setTheme(theme: "dark" | "light") {
+        rootElement.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
+    }
+
+    const savedTheme =
+        (localStorage.getItem("theme") as "dark" | "light") || "dark";
+    setTheme(savedTheme);
+
+    themeToggle?.addEventListener("click", () => {
+        const currentTheme = rootElement.getAttribute("data-theme");
+        const newTheme = currentTheme === "dark" ? "light" : "dark";
+        setTheme(newTheme);
+    });
+</script>

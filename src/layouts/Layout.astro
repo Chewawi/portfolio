@@ -1,4 +1,6 @@
 ---
+import "../styles/global.css";
+
 import { seo } from "../lib/seo";
 ---
 
@@ -8,6 +10,7 @@ import { seo } from "../lib/seo";
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="stylesheet" href="./src/styles/global.css" />
 		<meta name="robots" content="noindex" />
 		<meta name="generator" content={Astro.generator} />
 
@@ -26,6 +29,11 @@ import { seo } from "../lib/seo";
 		<div>
 			<slot />
 		</div>
+
+		<script is:inline>
+			const savedTheme = localStorage.getItem("theme") || "dark";
+			document.documentElement.setAttribute("data-theme", savedTheme);
+		</script>
 	</body>
 </html>
 
@@ -37,17 +45,17 @@ import { seo } from "../lib/seo";
 		margin: 0rem;
 		padding: 0rem;
 
-		background-color: black;
+		background-color: var(--bg-primary);
 	}
 
 	div {
-		/* border-inline: 3px solid hsla(0, 0%, 100%, 0.19); */
+		border-inline: 3px solid var(--bg-secondary);
 
 		margin-inline: 7rem;
 
 		min-height: 100dvh;
 
-		background-image: url(/grid.svg);
+		background-image: var(--grid-background);
 
 		background-size: cover;
 		background-position: 50%;

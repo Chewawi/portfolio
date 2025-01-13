@@ -1,0 +1,141 @@
+---
+import {
+    getDiscordUser,
+    getSpotifyStatus,
+    getCodeStatus,
+} from "~/lib/lanyard/api";
+import { Image } from "astro:assets";
+import Music from "lucide-static/icons/music.svg";
+import Code from "lucide-static/icons/code.svg";
+
+const user = await getDiscordUser();
+const spotify = await getSpotifyStatus();
+const coding = await getCodeStatus();
+---
+
+<div class="avatar-container">
+    <div class="avatar">
+        <Image
+            src={`https://cdn.discordapp.com/avatars/852970774067544165/${user.avatar}`}
+            alt={`${user.username}`}
+            width={200}
+            height={200}
+        />
+    </div>
+
+    {
+        (spotify || coding) && (
+            <div class="status-popup">
+                {spotify && (
+                    <div class="status-item">
+                        <Music size={16} />
+                        <div class="status-text">
+                            <p>{spotify.song}</p>
+                            <small>{spotify.artist}</small>
+                        </div>
+                    </div>
+                )}
+
+                {coding && (
+                    <div class="status-item">
+                        <Code size={16} />
+                        <div class="status-text">
+                            <p>Coding in VSCode</p>
+                            <small>{coding.details}</small>
+                        </div>
+                    </div>
+                )}
+            </div>
+        )
+    }
+</div>
+
+<style>
+    .avatar-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-direction: row;
+        position: relative;
+    }
+
+    .avatar {
+        width: 5.5em;
+        height: 5.2em;
+        display: flex;
+        flex: 0 0 auto;
+        border-radius: 9999px;
+        overflow: hidden;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .avatar img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: ease-in-out 0.2s;
+    }
+
+    .avatar img:hover {
+        filter: brightness(0.7);
+    }
+
+    .status-popup {
+        position: absolute;
+        left: calc(100% + 10px);
+        top: 50%;
+        transform: translateY(-50%);
+        background: #1a1a1a;
+        border: 1px solid #333;
+        border-radius: 8px;
+        padding: 0.5rem;
+        width: max-content;
+        max-width: 250px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.2s ease;
+    }
+
+    .avatar:hover + .status-popup,
+    .status-popup:hover {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .status-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0.5rem;
+    }
+
+    .status-item + .status-item {
+        border-top: 1px solid #333;
+    }
+
+    .status-text {
+        overflow: hidden;
+    }
+
+    .status-text p {
+        margin: 0;
+        font-size: 0.9rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .status-text small {
+        color: #888;
+        font-size: 0.8rem;
+    }
+
+    @media (max-width: 768px) {
+        .status-popup {
+            display: none;
+        }
+    }
+</style>
