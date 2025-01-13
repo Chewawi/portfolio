@@ -10,6 +10,7 @@
 	},
 	"dependencies": {
 		"@astrojs/tailwind": "^5.1.4",
+		"@astrojs/vercel": "^8.0.1",
 		"@fontsource-variable/jetbrains-mono": "^5.1.2",
 		"astro": "^5.1.1",
 		"lucide-static": "^0.469.0",
